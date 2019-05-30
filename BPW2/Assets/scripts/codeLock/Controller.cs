@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public Material[] material;
+    Renderer rend;
     CodeLock codeLock;
 
     public int reachRange = 100;
@@ -15,6 +17,7 @@ public class Controller : MonoBehaviour
         {
             CheckHitObj();
         }
+
     }
 
 
@@ -25,12 +28,22 @@ public class Controller : MonoBehaviour
 
         if(Physics.Raycast(ray,out hit, reachRange))
         {
-            codeLock = hit.transform.gameObject.GetComponentInParent<CodeLock>();
-            
-            if(codeLock != null)
+            if (hit.collider.gameObject.tag == "Switch")
             {
-                string value = hit.transform.name;
-                codeLock.SetValue(value);
+                hit.collider.GetComponent<light_button>().Power = true;
+                hit.collider.GetComponent<light_button>().Deur = true;
+            }
+            else if (hit.collider.gameObject.tag == "Button")
+            {
+                codeLock = hit.transform.gameObject.GetComponentInParent<CodeLock>();
+
+                if (codeLock != null)
+                {
+                    string value = hit.transform.name;
+                    codeLock.SetValue(value);
+                    hit.collider.GetComponent<Renderer>().sharedMaterial = material[1];
+
+                }
             }
         }
     }

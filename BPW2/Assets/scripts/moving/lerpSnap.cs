@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class lerpSnap : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Transform endMarker;
 
-    // Movement speed in units/sec.
     public float speed = 1.0F;
     public float threshold = 0.2F;
     public float snapRange = 1f;
-    // Time when the movement started.
+
     private float startTime;
 
     // Total distance between the markers.

@@ -7,10 +7,14 @@ public class RecordPlayer : MonoBehaviour
     //Aan maken lijst speakers
     public List<GameObject> speakers = new List<GameObject>();
 
+    public GameObject armAnm;
+
     //input muziek
     public AudioClip SoundToPlay;
     public AudioClip SoundToPlay2;
     public AudioClip SoundToPlay3;
+    public AudioClip SoundToPlay4;
+    //public Animator anim;
 
     AudioSource audio;
     //bool Zodat hij niet nog een keer speeld
@@ -18,21 +22,29 @@ public class RecordPlayer : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();    
+        audio = GetComponent<AudioSource>();
     }
 
 
     void OnTriggerStay(Collider other)
     {
+        //anmatie plaat die al draait
+        other.GetComponentInChildren<Animator>().Play("Record");
+        
+
         //als de bool uit is >
         if (!alreadPlayed && other.GetComponent<PickUp>().isHolding == false)
         {
+            //animatie arm
+            armAnm.GetComponent<Animator>().Play("Recordplayer");
             //Play Record1
             if (other.gameObject.name == "RP") 
             {
+                Debug.Log(SoundToPlay);
+
                 //bool aan zetten zodat hij niet nog een keer afspeeld
                 alreadPlayed = true;
-                Debug.Log(SoundToPlay);
+
 
                 //voor elke speaker
                 foreach (GameObject speaker in speakers)
@@ -55,7 +67,6 @@ public class RecordPlayer : MonoBehaviour
                     speaker.GetComponent<AudioSource>().clip = SoundToPlay2;
                     speaker.GetComponent<AudioSource>().Play();
                 }
-
             }
             //Play Record3
             else if (other.gameObject.name == "RP3")
@@ -67,18 +78,35 @@ public class RecordPlayer : MonoBehaviour
                 //voor elke speaker
                 foreach (GameObject speaker in speakers)
                 {
-
                     speaker.GetComponent<AudioSource>().clip = SoundToPlay3;
                     speaker.GetComponent<AudioSource>().Play();
                 }
-
             }
+            //Play Record4
+            else if (other.gameObject.name == "RP4")
+            {
+                //bool aan zetten zodat hij niet nog een keer afspeeld
+                alreadPlayed = true;
+                Debug.Log(SoundToPlay4);
 
+                //voor elke speaker
+                foreach (GameObject speaker in speakers)
+                {
+                    speaker.GetComponent<AudioSource>().clip = SoundToPlay4;
+                    speaker.GetComponent<AudioSource>().Play();
+                }
+            }
         }
     }
+    //Reset
     void OnTriggerExit(Collider other)
     {
+        //animatie reset
+        armAnm.GetComponent<Animator>().Play("STOP");
+        other.GetComponentInChildren<Animator>().Play("STOP");
+        //bool uit
         alreadPlayed = false;
+        //speakers uit zetten
         foreach (GameObject speaker in speakers)
         {
             speaker.GetComponent<AudioSource>().Stop();
