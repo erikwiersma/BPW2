@@ -7,7 +7,6 @@ public class Controller : MonoBehaviour
     public Material[] material;
     Renderer rend;
     CodeLock codeLock;
-
     public int reachRange = 100;
 
     // Update is called once per frame
@@ -17,10 +16,7 @@ public class Controller : MonoBehaviour
         {
             CheckHitObj();
         }
-
     }
-
-
     void CheckHitObj()
     {
         RaycastHit hit;
@@ -30,8 +26,21 @@ public class Controller : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Switch")
             {
-                hit.collider.GetComponent<light_button>().Power = true;
-                hit.collider.GetComponent<light_button>().Deur = true;
+                hit.collider.GetComponent<light_button>().State += 1f;
+            }
+            else if (hit.collider.gameObject.tag == "ComputerPlus")
+            {
+                hit.collider.GetComponent<computer>().State += 1f;
+                
+            }
+            else if (hit.collider.gameObject.tag == "ComputerMin")
+            {
+                hit.collider.GetComponent<computerFuel>().State += 1f;
+
+            }
+            else if (hit.collider.gameObject.tag == "ComputerMin")
+            {
+                hit.collider.GetComponent<computer>().State -= 1f;
             }
             else if (hit.collider.gameObject.tag == "Button")
             {

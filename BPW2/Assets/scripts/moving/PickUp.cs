@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [Header("pipesysteem")]
     public float pickUpDistance = 4f;
     public GameObject tempParent;
     public bool isHolding = false;
-    public bool check = true;
+    public bool plaat = false;
     public float trowFroce = 600f;
     Vector3 objectPos;
     float distance;
+    float Scrollx = 0.1f;
+    private float DraaiSpeed = 5f;
+
 
     public Boolean IsHolding
     {
@@ -23,11 +27,10 @@ public class PickUp : MonoBehaviour
             isHolding = value;
         }
     }
-
-    
             // Update is called once per frame
             void Update()
     {
+
 
         distance = Vector3.Distance(transform.position, tempParent.transform.position);
         if (distance >= pickUpDistance )
@@ -35,8 +38,28 @@ public class PickUp : MonoBehaviour
             IsHolding = false;
         }
         //check if isHolding
-        if (IsHolding == true && check == true)
+        if (IsHolding == true)
         {
+            //--------------------------------------------------------------------
+            //[voor ronddraaien object]
+            if (Input.GetKey("q"))
+            {
+                Scrollx = -DraaiSpeed;
+                float offsetX = Time.time * Scrollx;
+                //transform.localRotation = Quaternion.Euler(0, 0, Scrollx);
+                transform.Rotate(0, 0, Scrollx);
+            }
+            if (Input.GetKey("e"))
+            {
+                Scrollx = DraaiSpeed;
+                float offsetX = Time.time * Scrollx;
+                //transform.localRotation = Quaternion.Euler(0, 0, Scrollx);
+                transform.Rotate(0, 0, Scrollx);
+            }
+            //--------------------------------------------------------------------
+            //--------------------------------------------------------------------
+
+
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             transform.SetParent(tempParent.transform);
@@ -51,8 +74,31 @@ public class PickUp : MonoBehaviour
         {
             objectPos = transform.position;
             transform.SetParent(null);
-            GetComponent<Rigidbody>().useGravity = true;
             transform.position = objectPos;
+            if (plaat == true)
+            {
+                GetComponent<Rigidbody>().useGravity = true;
+            }
+
+            //--------------------------------------------------------------------
+            //[dit is voor pipsysteem kinematic en gravity
+            if (plaat == false)
+            {
+                if (GetComponent<pipesystem>().inRange == false)
+                {
+                    GetComponent<Rigidbody>().useGravity = true;
+                }
+                if (GetComponent<pipesystem>().inRange == true)
+                {
+                    GetComponent<Rigidbody>().isKinematic = true;
+                }
+                else
+                {
+                    GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
+            //--------------------------------------------------------------------
+            //--------------------------------------------------------------------
         }
     }
     void OnMouseDown()
@@ -61,7 +107,9 @@ public class PickUp : MonoBehaviour
         {
             IsHolding = true;                                           //bool van de ifstatement AAN
             GetComponent<Rigidbody>().useGravity = false;          //zet de zwaartekracht van de rigidboy uit
-            GetComponent<Rigidbody>().detectCollisions = true;     //zet de collision detection aan    
+            GetComponent<Rigidbody>().detectCollisions = true;     //zet de collision detection aan   
+
+            
         }
     }
     void OnMouseUp()

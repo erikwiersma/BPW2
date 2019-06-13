@@ -33,7 +33,7 @@ public class CodeLock : MonoBehaviour
         //checkt de code met de input
         if (attemptedCode == code)
         {
-            toOpen.GetComponent<Animator>().SetBool("open", true);
+            OpenANM();
         }
         else
         {
@@ -41,6 +41,11 @@ public class CodeLock : MonoBehaviour
         }
     }
     
+
+    void OpenANM()
+    {
+        toOpen.GetComponent<Animator>().SetBool("open", true);
+    }
     //Animate Door
 
     // Update is called once per frame

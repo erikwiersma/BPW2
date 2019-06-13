@@ -91,7 +91,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.689
+  m_Volume: 0.193
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -201,12 +201,13 @@ GameObject:
   - component: {fileID: 7352023022799888947}
   - component: {fileID: 7352023022797021715}
   - component: {fileID: 7352023022797988051}
+  - component: {fileID: 8361899647327054690}
   m_Layer: 0
   m_Name: Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7352023022799888947
 Transform:
@@ -268,3 +269,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8361899647327054690
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352023022799994387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: 18371e0d14b37db4cb33e91ede53aa01, type: 3}
