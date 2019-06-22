@@ -12,7 +12,7 @@ public class computer : MonoBehaviour
     public GameObject deurANM;
     public GameObject deurANM2;
 
-    string txt1 = "Warning...";
+    string txt1 = "Warning!";
     string txt2 = "Power decreasing...";
     string txt3 = "place fuses to start backup power...";
     string txt4 = "pickup items with mouse and rotate with Q & E...";

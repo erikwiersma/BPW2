@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/engineRoom.unity
+- path: Assets/Scenes/END SCREEN.unity
   isLoaded: 1
   isActive: 1

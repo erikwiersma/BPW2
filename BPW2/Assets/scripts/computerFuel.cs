@@ -18,6 +18,7 @@ public class computerFuel : MonoBehaviour
     public GameObject Text;
     public float State = 1f;
     public GameObject completeUI;
+    public GameObject engine;
 
 
     string txt1 = "Click to engage emergency power...";
@@ -35,7 +36,7 @@ public class computerFuel : MonoBehaviour
         yield return new WaitForSeconds(2);
         lamp3.GetComponent<Renderer>().sharedMaterial = material[1];
         yield return new WaitForSeconds(4);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
     }
 
     private void Update()
@@ -43,6 +44,7 @@ public class computerFuel : MonoBehaviour
         if (State == 1)
         {
             Text.GetComponent<TextMeshPro>().text = txt1;
+            engine.GetComponent<AudioSource>().Play();
         }
         if (State == 2)
         {
@@ -63,6 +65,7 @@ public class computerFuel : MonoBehaviour
         if (State == 1001)
         {
             Text.GetComponent<TextMeshPro>().text = txt5;
+            engine.GetComponent<AudioSource>().enabled = true;
             StartCoroutine(Returnplayer());
         }
     }

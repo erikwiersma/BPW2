@@ -1,8 +1,12 @@
 Win64
 PlayerPath?
-E:/school/blok 4/envirmetnal/build/BPW2.exe
+E:/school/BPW2/BPW2.exe
 SceneListBegin?
-Assets/Scenes/enviroment.unity
+Assets/Scenes/menu.unity
+Assets/Scenes/start.unity
+Assets/Scenes/second floor.unity
+Assets/Scenes/engineRoom.unity
+Assets/Scenes/END SCREEN.unity
 SceneListEnd?
 a1f19ad47d3094e235f21b74dfc423a8 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessLayer
 1095ec9f3eeae7eb7d180ab9e73b4cb3 Unity.RenderPipelines.HighDefinition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.ExponentialFog
@@ -185,7 +189,7 @@ a53651ee3996fbba20dfe0fce02f0b23 Unity.Postprocessing.Runtime.dll:UnityEngine.Re
 50c443b12ccc0b475183318b5088bcc5 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessDebug
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 4d51d5ccf37d2089bdfe827617b784ff Unity.RenderPipelines.Core.Runtime.dll:UnityEngine.Experimental.Rendering.VolumeProfile
-b69a798ed43f2be0d3061f85c30b1bde Assembly-CSharp.dll:.computerFuel
+90d459b52ce818544216cf23d671378e Assembly-CSharp.dll:.computerFuel
 3700fe9d8d037cc7eb1145595f35277d Unity.RenderPipelines.HighDefinition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.HDRenderPipelineAsset
 8d35f16c5022311c6f4d9432be73bfcf Unity.RenderPipelines.HighDefinition.Runtime.dll:UnityEngine.Experimental.Rendering.UI.DebugUIHandlerEnumField
 2260dfb6b5e5038b25516398953116fe Unity.RenderPipelines.HighDefinition.Runtime.dll:UnityEngine.Experimental.Rendering.HDPipeline.BakingSky
